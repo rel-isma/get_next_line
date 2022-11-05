@@ -12,28 +12,36 @@
 
 #include "get_next_line.h"
 
+
+
 char *get_next_line(int fd)
 {
-	static char *help;
-	char buf[BUFFER_SIZE + 1];
-    char *tmp;
-	char	*line;
-	int	read_c;
-	int len = 0;
+	static char	*help;
+	char		buf[BUFFER_SIZE + 1];
+    char		*tmp;
+	char		*line;
+	int			read_c;
+	int 		len = 0;
 	
 	if (fd < 0)
 		return (NULL);
-	while ((read_c = read(fd, buf, BUFFER_SIZE)) > 0 && ft_strchr(help, '\n') == '\0')
+	read_c = 1;
+	while (read_c > 0 && !ft_strchr(help, '\n'))
 	{
+		read_c = read(fd, buf, BUFFER_SIZE);
+		if (read_c <= 0)
+		{
+			return (NULL);
+		}
 		buf[read_c] = '\0';
 		tmp = help;
 		help = ft_strjoin(help, buf);
 		free(tmp);
 	}
-	if (read_c < 0)
-        return(NULL);
-	if (read_c == 0 && !help)
+	if (read_c <= 0 && !help)
+	{
 		help = NULL;
+	}
 	if (*help && !ft_strchr(help, '\n'))
 	{
 		line = help;
@@ -42,12 +50,24 @@ char *get_next_line(int fd)
 	}
 	if (ft_strchr(help, '\n'))
 	{
-		while (buf[len] != '\n')
+		while (help[len] != '\n')
 			len++;
 		tmp = help;
-		line = ft_substr(buf, 0, len);
+		line = ft_substr(help, 0, len + 1);
 		help = ft_strdup(tmp + len + 1);
 		free(tmp);
+		return (line);
 	}
 	return (NULL);
 }
+
+// int main()
+// {
+// 	int fd = open("test", O_RDONLY);
+// 	printf("%d\n", fd);
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+
+// }

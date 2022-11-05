@@ -65,8 +65,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char		*pcat;
 	const char	*cat_str;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));	
+	if (!s2)
+		return (ft_strdup(s1));
 	cat_str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!cat_str)
 		return (NULL);
@@ -88,6 +92,8 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 	int	len;
 
+	if (!s)
+		return (NULL);
 	len = ft_strlen(s);
 	i = 0;
 	while (len >= 0)
