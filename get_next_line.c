@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <libc.h>
 
 char	*ft_line(char *help)
 {
@@ -50,37 +51,41 @@ char	*ft_line_next(char *help)
 	return (NULL);
 }
 
-char	*read_file(int fd, char *help)
+int	read_and_read(int fd, char **help)
 {
-	int 	read_c = 1;
+	int 	read_c;
 	char 	*tmp;
 	char	buf[BUFFER_SIZE + 1];
 
-	while (read_c > 0 && !ft_strchr(help, '\n'))
+	read_c = 1;
+	while (read_c && !ft_strchr(*help, '\n'))
 	{
 		read_c = read(fd, buf, BUFFER_SIZE);
 		if (read_c <= 0)
-			return (NULL);
+			return (read_c);
 		buf[read_c] = '\0';
-		tmp = help;
-		help = ft_strjoin(help, buf);
+		tmp = *help;
+		*help = ft_strjoin(*help, buf);
 		free(tmp);
 	}
-	return (help);
+	return (read_c);
 }
 
 char *get_next_line(int fd)
 {
 	static char	*help;
 	char		*line;
-	
+	int			read_c;
+
 	if (fd < 0 || read(fd, NULL, 0) < 0)
 	{
 		free(help);
 		help = NULL;
 		return (NULL);
 	}
-	help = read_file(fd, help);
+	read_c = read_and_read(fd, &help);
+	if (read_c <= 0 && !help)
+		return (NULL);
 	if (help && !ft_strchr(help, '\n'))	
 	{
 		line = help;
@@ -92,17 +97,13 @@ char *get_next_line(int fd)
 	return (line);
 }
 
-#include <fcntl.h>
-
-#include <stdio.h>
-
-int main()
-{
-    char    *line;
-    int fd = open("test", O_RDONLY );
-	while ((line = get_next_line(fd)))
-    {
-		printf("%s", line);
-        free(line);
-    }
-}
+// int main()
+// {
+//     char    *line;
+//     int fd = open("test", O_RDONLY );
+// 	while ((line = get_next_line(fd)))
+//     {
+// 		printf("%s", line);
+//         free(line);
+//     }
+// }

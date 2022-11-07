@@ -118,3 +118,41 @@ size_t	ft_strlen(const char *s)
 	}
 	return (i);
 }
+
+// char	*ft_line(char *help)
+// {
+// 	int len;
+// 	char *str;
+
+// 	len = 0;
+// 	if (!help)
+// 		return (NULL);
+// 	if (ft_strchr(help, '\n'))
+// 	{
+// 		while (help[len] != '\n')
+// 			len++;
+// 		str = ft_substr(help, 0, len + 1);
+// 		return (str);
+// 	}
+// 	return (help);
+// }
+
+// char	*ft_line_next(char *help)
+// {
+// 	int len2;
+// 	char *str2;
+
+// 	len2 = 0;
+// 	if (!help)
+// 		return (NULL);
+// 	if (ft_strchr(help, '\n'))
+// 	{
+// 		while (help[len2] != '\n')
+// 			len2++;
+// 		str2 = help;
+// 		str2 = ft_strdup(&str2[len2 + 1]);
+// 		free(help);
+// 		return (str2);
+// 	}
+// 	return (NULL);
+// }

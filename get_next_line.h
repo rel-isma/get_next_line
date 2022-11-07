@@ -24,6 +24,6 @@ char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
 char	*ft_line(char *help);
 char	*ft_line_next(char *help);
-char	*read_file(int fd, char *help);
+char	*read_in_file(int fd, char *help);
 
 # endif
