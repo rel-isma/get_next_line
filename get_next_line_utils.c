@@ -46,6 +46,8 @@ char	*ft_strdup(const char *s1)
 	int		len_str;
 	char	*scpy;
 
+	if (!s1)
+		return NULL;
 	len_str = ft_strlen(s1);
 	scpy = malloc((len_str + 1) * sizeof(char));
 	if (!scpy)
