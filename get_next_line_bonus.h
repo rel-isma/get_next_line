@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 12:02:52 by rel-isma          #+#    #+#             */
-/*   Updated: 2022/11/08 17:54:35 by rel-isma         ###   ########.fr       */
+/*   Created: 2022/11/08 17:20:38 by rel-isma          #+#    #+#             */
+/*   Updated: 2022/11/08 17:53:56 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define  GET_NEXT_LINE_BONUS_H
 
-# include <stdlib.h>
+# include <libc.h>
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);

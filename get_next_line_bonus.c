@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 10:49:17 by rel-isma          #+#    #+#             */
-/*   Updated: 2022/11/08 17:32:00 by rel-isma         ###   ########.fr       */
+/*   Created: 2022/11/08 17:17:32 by rel-isma          #+#    #+#             */
+/*   Updated: 2022/11/08 20:19:02 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <libc.h>
+#include "get_next_line_bonus.h"
 
 char	*ft_line(char *help)
 {
@@ -78,26 +77,26 @@ int	read_and_read(int fd, char **help)
 
 char	*get_next_line(int fd)
 {
-	static char	*help;
+	static char	*help[10240];
 	char		*line;
 	size_t		read_c;
 
 	if (fd < 0 || read(fd, NULL, 0) < 0)
 	{
-		free(help);
-		help = NULL;
+		free(help[fd]);
+		help[fd] = NULL;
 		return (NULL);
 	}
-	read_c = read_and_read(fd, &help);
-	if (read_c <= 0 && !help)
+	read_c = read_and_read(fd, &help[fd]);
+	if (read_c <= 0 && !help[fd])
 		return (NULL);
-	if (help && !ft_strchr(help, '\n'))
+	if (help[fd] && !ft_strchr(help[fd], '\n'))
 	{
-		line = help;
-		help = NULL;
+		line = help[fd];
+		help[fd] = NULL;
 		return (line);
 	}
-	line = ft_line(help);
-	help = ft_line_next(help);
+	line = ft_line(help[fd]);
+	help[fd] = ft_line_next(help[fd]);
 	return (line);
 }
