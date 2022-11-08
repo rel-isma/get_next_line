@@ -33,7 +33,7 @@ char	*ft_line(char *help)
 
 char	*ft_line_next(char *help)
 {
-	int len2;
+	size_t len2;
 	char *str2;
 
 	len2 = 0;
@@ -43,6 +43,11 @@ char	*ft_line_next(char *help)
 	{
 		while (help[len2] != '\n')
 			len2++;
+		if (help[len2 + 1] == '\0')
+		{
+			free(help);
+			return (NULL);
+		}
 		str2 = help;
 		str2 = ft_strdup(&str2[len2 + 1]);
 		free(help);
@@ -101,6 +106,7 @@ char *get_next_line(int fd)
 // {
 //     char    *line;
 //     int fd = open("test", O_RDONLY );
+	
 // 	while ((line = get_next_line(fd)))
 //     {
 // 		printf("%s", line);
