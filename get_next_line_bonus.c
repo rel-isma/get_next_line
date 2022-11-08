@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:17:32 by rel-isma          #+#    #+#             */
-/*   Updated: 2022/11/08 20:19:02 by rel-isma         ###   ########.fr       */
+/*   Updated: 2022/11/08 23:01:31 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	read_and_read(int fd, char **help)
 
 char	*get_next_line(int fd)
 {
-	static char	*help[10240];
+	static char	*help[OPEN_MAX];
 	char		*line;
 	size_t		read_c;
 

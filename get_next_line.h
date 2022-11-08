@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:02:52 by rel-isma          #+#    #+#             */
-/*   Updated: 2022/11/08 17:54:35 by rel-isma         ###   ########.fr       */
+/*   Updated: 2022/11/08 23:02:19 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define GET_NEXT_LINE_H
 
 # include <stdlib.h>
+# include <fcntl.h>
+# include <unistd.h>
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);

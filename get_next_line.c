@@ -6,12 +6,11 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 10:49:17 by rel-isma          #+#    #+#             */
-/*   Updated: 2022/11/08 17:32:00 by rel-isma         ###   ########.fr       */
+/*   Updated: 2022/11/08 23:02:51 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <libc.h>
 
 char	*ft_line(char *help)
 {

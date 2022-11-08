@@ -6,14 +6,17 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:20:38 by rel-isma          #+#    #+#             */
-/*   Updated: 2022/11/08 17:53:56 by rel-isma         ###   ########.fr       */
+/*   Updated: 2022/11/08 23:00:01 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define  GET_NEXT_LINE_BONUS_H
 
-# include <libc.h>
+# include <limits.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <unistd.h>
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
